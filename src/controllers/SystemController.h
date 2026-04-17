@@ -17,6 +17,12 @@ class SystemController : public QObject
     Q_PROPERTY(bool autostartEnabled READ autostartEnabled WRITE setAutostartEnabled NOTIFY autostartEnabledChanged)
     Q_PROPERTY(QString osVersion READ osVersion CONSTANT)
     Q_PROPERTY(QString kdeVersion READ kdeVersion CONSTANT)
+    Q_PROPERTY(QString displayServer READ displayServer CONSTANT)
+    Q_PROPERTY(QString kernelVersion READ kernelVersion CONSTANT)
+    Q_PROPERTY(QString hostname READ hostname CONSTANT)
+    Q_PROPERTY(QString cpuInfo READ cpuInfo CONSTANT)
+    Q_PROPERTY(QString ramInfo READ ramInfo CONSTANT)
+    Q_PROPERTY(QString machineType READ machineType CONSTANT)
 
 public:
     explicit SystemController(QObject *parent = nullptr);
@@ -24,6 +30,12 @@ public:
     bool autostartEnabled() const;
     QString osVersion() const;
     QString kdeVersion() const;
+    QString displayServer() const;
+    QString kernelVersion() const;
+    QString hostname() const;
+    QString cpuInfo() const;
+    QString ramInfo() const;
+    QString machineType() const;
 
     Q_INVOKABLE void setAutostartEnabled(bool enabled);
     

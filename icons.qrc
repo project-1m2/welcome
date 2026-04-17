@@ -1,0 +1,83 @@
+<RCC>
+    <qresource prefix="/icons">
+        <!-- Window controls -->
+        <file alias="window-close.svg">icons/symbolic/window-close.svg</file>
+        <file alias="window-minimize.svg">icons/symbolic/window-minimize.svg</file>
+        <file alias="window-maximize.svg">icons/symbolic/window-maximize.svg</file>
+        <file alias="window-restore.svg">icons/symbolic/window-restore.svg</file>
+        
+        <!-- Navigation -->
+        <file alias="arrow-right.svg">icons/symbolic/arrow-right.svg</file>
+        <file alias="go-next.svg">icons/symbolic/go-next.svg</file>
+        <file alias="go-previous.svg">icons/symbolic/go-previous.svg</file>
+        
+        <!-- System -->
+        <file alias="system-software-update.svg">icons/symbolic/system-software-update.svg</file>
+        <file alias="system-users.svg">icons/symbolic/system-users.svg</file>
+        <file alias="security-high.svg">icons/symbolic/security-high.svg</file>
+        <file alias="folder-sync.svg">icons/symbolic/folder-sync.svg</file>
+        <file alias="cpu.svg">icons/symbolic/cpu.svg</file>
+        <file alias="memory.svg">icons/symbolic/memory.svg</file>
+        <file alias="clock.svg">icons/symbolic/clock.svg</file>
+        <file alias="configure.svg">icons/symbolic/configure.svg</file>
+        
+        <!-- Preferences -->
+        <file alias="preferences-desktop-theme.svg">icons/symbolic/preferences-desktop-theme.svg</file>
+        <file alias="preferences-desktop-font.svg">icons/symbolic/preferences-desktop-font.svg</file>
+        <file alias="preferences-desktop-icons.svg">icons/symbolic/preferences-desktop-icons.svg</file>
+        <file alias="preferences-desktop-wallpaper.svg">icons/symbolic/preferences-desktop-wallpaper.svg</file>
+        <file alias="preferences-system-activities.svg">icons/symbolic/preferences-system-activities.svg</file>
+        
+        <!-- Applications -->
+        <file alias="application-x-executable.svg">icons/symbolic/application-x-executable.svg</file>
+        <file alias="applications-office.svg">icons/symbolic/applications-office.svg</file>
+        <file alias="applications-versioncontrol.svg">icons/symbolic/applications-versioncontrol.svg</file>
+        <file alias="applications-chat.svg">icons/symbolic/applications-chat.svg</file>
+        <file alias="applications-graphics.svg">icons/symbolic/applications-graphics.svg</file>
+        
+        <!-- Browsers -->
+        <file alias="internet-web-browser.svg">icons/symbolic/internet-web-browser.svg</file>
+        <file alias="google-chrome.svg">icons/symbolic/google-chrome.svg</file>
+        <file alias="brave-browser.svg">icons/symbolic/brave-browser.svg</file>
+        <file alias="microsoft-edge.svg">icons/symbolic/microsoft-edge.svg</file>
+        <file alias="opera.svg">icons/symbolic/opera.svg</file>
+        <file alias="tor-browser.png">icons/symbolic/tor-browser.png</file>
+        
+        <!-- Office -->
+        <file alias="libreoffice-startcenter.svg">icons/symbolic/libreoffice-startcenter.svg</file>
+        <file alias="wps-office2019-kprometheus.svg">icons/symbolic/wps-office2019-kprometheus.svg</file>
+        <file alias="ms-office.svg">icons/symbolic/ms-office.svg</file>
+        <file alias="google-docs.svg">icons/symbolic/google-docs.svg</file>
+        
+        <!-- AI Apps -->
+        <file alias="chatgpt.png">icons/symbolic/chatgpt.png</file>
+        <file alias="gemini.png">icons/symbolic/gemini.png</file>
+        <file alias="maritalk.png">icons/symbolic/maritalk.png</file>
+        <file alias="leonardo-ai.svg">icons/symbolic/leonardo-ai.svg</file>
+        
+        <!-- Community (PNG for Qt compatibility) -->
+        <file alias="github.png">icons/symbolic/github.png</file>
+        <file alias="fork.png">icons/symbolic/fork.png</file>
+        <file alias="telegram.png">icons/symbolic/telegram.png</file>
+        <file alias="youtube.png">icons/symbolic/youtube.png</file>
+        <file alias="instagram.png">icons/symbolic/instagram.png</file>
+        <file alias="documentation.png">icons/symbolic/documentation.png</file>
+        <file alias="tools-report-bug.png">icons/symbolic/tools-report-bug.png</file>
+        <file alias="starred-symbolic.png">icons/symbolic/starred-symbolic.png</file>
+        <file alias="system-users.png">icons/symbolic/system-users.png</file>
+        <file alias="love.png">icons/symbolic/love.png</file>
+        
+        <!-- Misc -->
+        <file alias="help-about.svg">icons/symbolic/help-about.svg</file>
+        <file alias="love.svg">icons/symbolic/love.svg</file>
+        <file alias="video-display.svg">icons/symbolic/video-display.svg</file>
+        <file alias="video-x-generic.svg">icons/symbolic/video-x-generic.svg</file>
+        <file alias="distributor-logo.svg">icons/symbolic/distributor-logo.svg</file>
+        <file alias="plasma.svg">icons/symbolic/plasma.svg</file>
+        <file alias="tux.svg">icons/symbolic/tux.svg</file>
+        <file alias="google.svg">icons/symbolic/google.svg</file>
+        
+        <!-- Logo -->
+        <file alias="tigeros-welcome.png">icons/tigeros-welcome.png</file>
+    </qresource>
+</RCC>

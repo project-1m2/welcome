@@ -131,7 +131,7 @@ ApplicationWindow {
         id: backgroundRect
         anchors.fill: parent
         radius: 12
-        color: Qt.rgba(0.07, 0.07, 0.07, 0.75)  // Dark translucent (#121212 at 75%)
+        color: Qt.rgba(0.07, 0.07, 0.07, 0.85)  // Dark translucent (#121212 at 85%)
         
         // Tiger orange accent glow - top right
         Rectangle {

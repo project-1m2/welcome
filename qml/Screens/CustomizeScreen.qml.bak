@@ -181,14 +181,17 @@ Item {
                         font.weight: Font.SemiBold
                     }
 
-                    // Quick Actions - Row 1
-                    Row {
-                        id: row1
+                    GridLayout {
+                        id: actionsGrid
                         Layout.fillWidth: true
-                        spacing: Theme.TigerTheme.spacing.sm
+                        columns: 2
+                        rowSpacing: Theme.TigerTheme.spacing.sm
+                        columnSpacing: Theme.TigerTheme.spacing.sm
+                        
+                        property real buttonWidth: (width - columnSpacing) / 2
 
                         Components.GlassButton {
-                            width: (row1.width - row1.spacing) / 2
+                            Layout.preferredWidth: actionsGrid.buttonWidth
                             text: qsTr("Sistema")
                             variant: "secondary"
                             iconName: "configure"
@@ -202,7 +205,7 @@ Item {
                         }
 
                         Components.GlassButton {
-                            width: (row1.width - row1.spacing) / 2
+                            Layout.preferredWidth: actionsGrid.buttonWidth
                             text: qsTr("Papel de Parede")
                             variant: "secondary"
                             iconName: "preferences-desktop-wallpaper"
@@ -214,16 +217,9 @@ Item {
                                 }
                             }
                         }
-                    }
-
-                    // Quick Actions - Row 2
-                    Row {
-                        id: row2
-                        Layout.fillWidth: true
-                        spacing: Theme.TigerTheme.spacing.sm
 
                         Components.GlassButton {
-                            width: (row2.width - row2.spacing) / 2
+                            Layout.preferredWidth: actionsGrid.buttonWidth
                             text: qsTr("Ícones")
                             variant: "secondary"
                             iconName: "preferences-desktop-icons"
@@ -237,7 +233,7 @@ Item {
                         }
 
                         Components.GlassButton {
-                            width: (row2.width - row2.spacing) / 2
+                            Layout.preferredWidth: actionsGrid.buttonWidth
                             text: qsTr("Fontes")
                             variant: "secondary"
                             iconName: "preferences-desktop-font"

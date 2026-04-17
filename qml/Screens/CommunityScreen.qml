@@ -79,7 +79,7 @@ Item {
                         subtitle: qsTr("Código-fonte e issues")
                         iconName: "fork"
                         accentColor: "#6e5494"
-                        onClicked: Qt.openUrlExternally("https://github.com/TigerOS-Linux")
+                        onClicked: systemController.openUrl("https://github.com/Tiger-OperatingSystem")
                     }
 
                     CommunityLinkCard {
@@ -89,7 +89,7 @@ Item {
                         subtitle: qsTr("Grupo da comunidade")
                         iconName: "telegram"
                         accentColor: "#0088cc"
-                        onClicked: Qt.openUrlExternally("https://t.me/TigerOS_Linux")
+                        onClicked: systemController.openUrl("https://t.me/TigerOS_Linux")
                     }
 
                     CommunityLinkCard {
@@ -99,27 +99,27 @@ Item {
                         subtitle: qsTr("Documentação oficial")
                         iconName: "internet-web-browser"
                         accentColor: "#00D4AA"
-                        onClicked: Qt.openUrlExternally("https://tigeros.com.br")
+                        onClicked: systemController.openUrl("https://tigeros.com.br")
                     }
 
                     CommunityLinkCard {
                         Layout.fillWidth: true
                         Layout.preferredHeight: 100
-                        title: qsTr("Fórum")
-                        subtitle: qsTr("Discussões e suporte")
-                        iconName: "system-users"
-                        accentColor: "#8B7355"
-                        onClicked: Qt.openUrlExternally("https://forum.tigeros.com.br")
+                        title: qsTr("YouTube")
+                        subtitle: qsTr("Tutoriais e vídeos")
+                        iconName: "youtube"
+                        accentColor: "#FF0000"
+                        onClicked: systemController.openUrl("https://www.youtube.com/@mestresemlinux")
                     }
 
                     CommunityLinkCard {
                         Layout.fillWidth: true
                         Layout.preferredHeight: 100
-                        title: "Wiki"
-                        subtitle: qsTr("Guias e tutoriais")
-                        iconName: "documentation"
-                        accentColor: "#17a2b8"
-                        onClicked: Qt.openUrlExternally("https://wiki.tigeros.com.br")
+                        title: "Instagram"
+                        subtitle: qsTr("Siga nas redes")
+                        iconName: "instagram"
+                        accentColor: "#E4405F"
+                        onClicked: systemController.openUrl("https://instagram.com/tigerosbr/")
                     }
 
                     CommunityLinkCard {
@@ -129,7 +129,7 @@ Item {
                         subtitle: qsTr("Ajude a melhorar")
                         iconName: "tools-report-bug"
                         accentColor: "#dc3545"
-                        onClicked: Qt.openUrlExternally("https://github.com/TigerOS-Linux/TigerOS/issues")
+                        onClicked: systemController.openUrl("https://github.com/Tiger-OperatingSystem/TigerOS/issues")
                     }
                 }
 
@@ -180,7 +180,7 @@ Item {
                             text: qsTr("Doar")
                             variant: "primary"
                             iconName: "starred-symbolic"
-                            onClicked: Qt.openUrlExternally("https://tigeros.com.br/donate")
+                            onClicked: systemController.openUrl("https://ko-fi.com/mestresemlinux")
                         }
                     }
                 }

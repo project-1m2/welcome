@@ -38,7 +38,8 @@ INCLUDEPATH += \
 RESOURCES += \
     qml/qml.qrc \
     ImgsResources.qrc \
-    scripts.qrc
+    scripts.qrc \
+    icons.qrc
 
 # QML import path
 QML_IMPORT_PATH = $$PWD/qml

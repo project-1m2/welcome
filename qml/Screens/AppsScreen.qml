@@ -119,7 +119,7 @@ Item {
                     id: "chatgpt", 
                     name: "ChatGPT", 
                     desc: qsTr("IA conversacional da OpenAI"), 
-                    icon: "applications-versioncontrol", 
+                    icon: "chatgpt", 
                     script: ":/Scripts/chatgpt.sh",
                     isWebApp: true
                 },
@@ -127,7 +127,7 @@ Item {
                     id: "gemini", 
                     name: "Google Gemini", 
                     desc: qsTr("IA do Google"), 
-                    icon: "google", 
+                    icon: "gemini", 
                     script: ":/Scripts/gemini.sh",
                     isWebApp: true
                 },
@@ -135,7 +135,7 @@ Item {
                     id: "maritalk", 
                     name: "Maritalk", 
                     desc: qsTr("IA brasileira"), 
-                    icon: "applications-chat", 
+                    icon: "maritalk", 
                     script: ":/Scripts/maritalk.sh",
                     isWebApp: true
                 },
@@ -143,7 +143,7 @@ Item {
                     id: "leonardo", 
                     name: "Leonardo AI", 
                     desc: qsTr("Geração de imagens com IA"), 
-                    icon: "applications-graphics", 
+                    icon: "leonardo-ai", 
                     script: ":/Scripts/leonardo-ai.sh",
                     isWebApp: true
                 }

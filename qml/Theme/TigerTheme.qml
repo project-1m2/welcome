@@ -87,10 +87,10 @@ QtObject {
         readonly property color secondaryHover: "#FFE082"
         
         // === GLASS BACKGROUNDS (Dark Mode) ===
-        readonly property color glassLight: Qt.rgba(1, 1, 1, 0.12)
-        readonly property color glassMedium: Qt.rgba(1, 1, 1, 0.18)
-        readonly property color glassHeavy: Qt.rgba(1, 1, 1, 0.25)
-        readonly property color glassDark: Qt.rgba(0, 0, 0, 0.2)
+        readonly property color glassLight: Qt.rgba(1, 1, 1, 0.25)
+        readonly property color glassMedium: Qt.rgba(1, 1, 1, 0.35)
+        readonly property color glassHeavy: Qt.rgba(1, 1, 1, 0.45)
+        readonly property color glassDark: Qt.rgba(0, 0, 0, 0.35)
         
         // === TEXT COLORS (Dark Mode) ===
         readonly property color textPrimary: theme.tiger.white
