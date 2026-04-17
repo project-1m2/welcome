@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/qml">
+        <file>main.qml</file>
+        
+        <!-- Theme Module -->
+        <file>Theme/qmldir</file>
+        <file>Theme/TigerTheme.qml</file>
+        
+        <!-- Components Module -->
+        <file>Components/qmldir</file>
+        <file>Components/GlassCard.qml</file>
+        <file>Components/GlassButton.qml</file>
+        <file>Components/AppListItem.qml</file>
+        <file>Components/CategoryCard.qml</file>
+        <file>Components/Icon.qml</file>
+        
+        <!-- Screens Module -->
+        <file>Screens/qmldir</file>
+        <file>Screens/WelcomeScreen.qml</file>
+        <file>Screens/HubScreen.qml</file>
+        <file>Screens/CustomizeScreen.qml</file>
+        <file>Screens/AppsScreen.qml</file>
+        <file>Screens/FirstStepsScreen.qml</file>
+        <file>Screens/CommunityScreen.qml</file>
+    </qresource>
+</RCC>

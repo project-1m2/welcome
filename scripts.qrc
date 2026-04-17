@@ -7,5 +7,14 @@
         <file>Scripts/gemini.sh</file>
         <file>Scripts/leonardo-ai.sh</file>
         <file>Scripts/maritalk.sh</file>
+        <file>Scripts/navegadores/brave.sh</file>
+        <file>Scripts/navegadores/chrome.sh</file>
+        <file>Scripts/navegadores/edge.sh</file>
+        <file>Scripts/navegadores/firefox.sh</file>
+        <file>Scripts/navegadores/opera.sh</file>
+        <file>Scripts/office/libreoffice.sh</file>
+        <file>Scripts/office/msoffice.sh</file>
+        <file>Scripts/office/office365.sh</file>
+        <file>Scripts/office/wps.sh</file>
     </qresource>
 </RCC>

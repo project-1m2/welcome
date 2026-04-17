@@ -1,0 +1,440 @@
+/**
+ * CustomizeScreen.qml - Theme & Accent Color Personalization
+ * 
+ * Features:
+ * - Light/Dark/Auto theme selection
+ * - Accent color selection (Purple, Green, Brown, Grey, Blue, Magenta)
+ * - System settings shortcuts
+ */
+
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
+
+import "../Theme" as Theme
+import "../Components" as Components
+
+Item {
+    id: root
+
+    signal backClicked()
+
+    property string selectedTheme: themeController ? themeController.currentTheme : "light"
+    property string selectedAccentColor: "Orange"
+    property string selectedAccentHex: "#f69310"
+
+    // Accent colors from legacy app
+    property var accentColors: [
+        { name: "Orange", hex: "#f69310", decimal: "246, 147, 16" },
+        { name: "Blue", hex: "#00557F", decimal: "0, 85, 127" },
+        { name: "Brown", hex: "#964B00", decimal: "150, 75, 0" },
+        { name: "Cyan", hex: "#00CED1", decimal: "0, 206, 209" },
+        { name: "Lavanda", hex: "#9B59B6", decimal: "155, 89, 182" },
+        { name: "Lima", hex: "#32CD32", decimal: "50, 205, 50" }
+    ]
+
+    Components.GlassCard {
+        id: customizeCard
+        anchors.fill: parent
+        anchors.margins: Theme.TigerTheme.spacing.md
+        interactive: false
+        glassOpacity: 0.2
+
+        contentItem: [
+            Flickable {
+                anchors.fill: parent
+                anchors.margins: Theme.TigerTheme.spacing.lg
+                contentHeight: contentColumn.height
+                clip: true
+                boundsBehavior: Flickable.StopAtBounds
+
+                ColumnLayout {
+                    id: contentColumn
+                    width: parent.width
+                    spacing: Theme.TigerTheme.spacing.lg
+
+                    // Header
+                    RowLayout {
+                        Layout.fillWidth: true
+                        spacing: Theme.TigerTheme.spacing.md
+
+                        Components.GlassButton {
+                            variant: "ghost"
+                            iconName: "go-previous"
+                            iconOnly: true
+                            implicitWidth: 36
+                            implicitHeight: 36
+                            radius: 18
+                            onClicked: root.backClicked()
+                        }
+
+                        Text {
+                            Layout.fillWidth: true
+                            text: qsTr("Personalizar o Visual")
+                            color: Theme.TigerTheme.colors.textPrimary
+                            font.pixelSize: Theme.TigerTheme.typography.sizeXl
+                            font.weight: Theme.TigerTheme.typography.weightBold
+                        }
+                    }
+
+                    // =========================================================
+                    // SECTION: Theme Selection
+                    // =========================================================
+                    
+                    Text {
+                        text: qsTr("Tema do Sistema")
+                        color: Theme.TigerTheme.colors.textPrimary
+                        font.pixelSize: Theme.TigerTheme.typography.sizeMd
+                        font.weight: Font.SemiBold
+                    }
+
+                    RowLayout {
+                        Layout.fillWidth: true
+                        spacing: Theme.TigerTheme.spacing.sm
+
+                        ThemePreviewCard {
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 140
+                            themeName: "light"
+                            themeLabel: qsTr("Claro")
+                            isSelected: root.selectedTheme === "light"
+                            previewGradient: ["#E8F4F8", "#D1E8EF"]
+                            
+                            onClicked: {
+                                root.selectedTheme = "light"
+                                if (themeController) themeController.setCurrentTheme("light")
+                                applyPlasmaTheme()
+                            }
+                        }
+
+                        ThemePreviewCard {
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 140
+                            themeName: "dark"
+                            themeLabel: qsTr("Escuro")
+                            isSelected: root.selectedTheme === "dark"
+                            previewGradient: ["#1E293B", "#0F172A"]
+                            
+                            onClicked: {
+                                root.selectedTheme = "dark"
+                                if (themeController) themeController.setCurrentTheme("dark")
+                                applyPlasmaTheme()
+                            }
+                        }
+
+                        ThemePreviewCard {
+                            Layout.fillWidth: true
+                            Layout.preferredHeight: 140
+                            themeName: "auto"
+                            themeLabel: qsTr("Auto")
+                            isSelected: root.selectedTheme === "auto"
+                            previewGradient: ["#3B82F6", "#8B5CF6"]
+                            showAutoIcon: true
+                            
+                            onClicked: {
+                                root.selectedTheme = "auto"
+                                if (themeController) themeController.setCurrentTheme("auto")
+                            }
+                        }
+                    }
+
+                    // =========================================================
+                    // SECTION: Accent Color
+                    // =========================================================
+                    
+                    Text {
+                        text: qsTr("Cor de Destaque")
+                        color: Theme.TigerTheme.colors.textPrimary
+                        font.pixelSize: Theme.TigerTheme.typography.sizeMd
+                        font.weight: Font.SemiBold
+                    }
+
+                    Flow {
+                        Layout.fillWidth: true
+                        spacing: Theme.TigerTheme.spacing.sm
+
+                        Repeater {
+                            model: root.accentColors
+
+                            AccentColorButton {
+                                colorName: modelData.name
+                                colorHex: modelData.hex
+                                isSelected: root.selectedAccentColor === modelData.name
+                                
+                                onClicked: {
+                                    root.selectedAccentColor = modelData.name
+                                    root.selectedAccentHex = modelData.hex
+                                    applyAccentColor(modelData.hex)
+                                }
+                            }
+                        }
+                    }
+
+                    // =========================================================
+                    // SECTION: Quick Actions
+                    // =========================================================
+                    
+                    Text {
+                        text: qsTr("Ações Rápidas")
+                        color: Theme.TigerTheme.colors.textPrimary
+                        font.pixelSize: Theme.TigerTheme.typography.sizeMd
+                        font.weight: Font.SemiBold
+                    }
+
+                    GridLayout {
+                        Layout.fillWidth: true
+                        columns: 2
+                        rowSpacing: Theme.TigerTheme.spacing.sm
+                        columnSpacing: Theme.TigerTheme.spacing.sm
+
+                        Components.GlassButton {
+                            Layout.fillWidth: true
+                            text: qsTr("Configurações do Sistema")
+                            variant: "secondary"
+                            iconName: "configure"
+                            implicitHeight: 44
+                            
+                            onClicked: {
+                                if (systemController) {
+                                    systemController.runCommand("systemsettings5")
+                                }
+                            }
+                        }
+
+                        Components.GlassButton {
+                            Layout.fillWidth: true
+                            text: qsTr("Papel de Parede")
+                            variant: "secondary"
+                            iconName: "preferences-desktop-wallpaper"
+                            implicitHeight: 44
+                            
+                            onClicked: {
+                                if (systemController) {
+                                    systemController.runCommand("kcmshell5 kcm_lookandfeel")
+                                }
+                            }
+                        }
+
+                        Components.GlassButton {
+                            Layout.fillWidth: true
+                            text: qsTr("Ícones")
+                            variant: "secondary"
+                            iconName: "preferences-desktop-icons"
+                            implicitHeight: 44
+                            
+                            onClicked: {
+                                if (systemController) {
+                                    systemController.runCommand("kcmshell5 kcm_icons")
+                                }
+                            }
+                        }
+
+                        Components.GlassButton {
+                            Layout.fillWidth: true
+                            text: qsTr("Fontes")
+                            variant: "secondary"
+                            iconName: "preferences-desktop-font"
+                            implicitHeight: 44
+                            
+                            onClicked: {
+                                if (systemController) {
+                                    systemController.runCommand("kcmshell5 kcm_fonts")
+                                }
+                            }
+                        }
+                    }
+
+                    Item { Layout.preferredHeight: Theme.TigerTheme.spacing.md }
+                }
+            }
+        ]
+    }
+
+    // =========================================================================
+    // FUNCTIONS
+    // =========================================================================
+    
+    function applyPlasmaTheme() {
+        if (!systemController) return
+        
+        var mode = root.selectedTheme === "dark" ? "Dark" : "Light"
+        var colorScheme = root.selectedTheme === "dark" ? "BreezeDark" : "BreezeLight"
+        
+        // Apply color scheme
+        systemController.runCommand("plasma-apply-colorscheme " + colorScheme)
+        
+        // Apply desktop theme
+        var desktopTheme = root.selectedAccentColor + "-" + mode
+        systemController.runCommand("plasma-apply-desktoptheme " + desktopTheme)
+    }
+
+    function applyAccentColor(hex) {
+        if (!systemController) return
+        
+        // Apply accent color via Plasma
+        systemController.runCommand("plasma-apply-colorscheme --accent-color " + hex)
+        
+        // Update desktop theme
+        var mode = root.selectedTheme === "dark" ? "Dark" : "Light"
+        var desktopTheme = root.selectedAccentColor + "-" + mode
+        systemController.runCommand("plasma-apply-desktoptheme " + desktopTheme)
+        
+        // Reconfigure KWin
+        systemController.runCommand("qdbus org.kde.KWin /KWin reconfigure")
+    }
+
+    // =========================================================================
+    // COMPONENTS
+    // =========================================================================
+    
+    component ThemePreviewCard: Rectangle {
+        id: previewCard
+        
+        property string themeName: ""
+        property string themeLabel: ""
+        property bool isSelected: false
+        property var previewGradient: ["#FFFFFF", "#F0F0F0"]
+        property bool showAutoIcon: false
+        
+        signal clicked()
+        
+        radius: Theme.TigerTheme.radius.md
+        color: Theme.TigerTheme.colors.glassLight
+        border.width: previewCard.isSelected ? 2 : 1
+        border.color: previewCard.isSelected 
+                     ? Theme.TigerTheme.colors.primary 
+                     : Theme.TigerTheme.colors.borderLight
+        
+        Behavior on border.color { ColorAnimation { duration: 150 } }
+        
+        MouseArea {
+            anchors.fill: parent
+            cursorShape: Qt.PointingHandCursor
+            onClicked: previewCard.clicked()
+        }
+        
+        ColumnLayout {
+            anchors.fill: parent
+            anchors.margins: Theme.TigerTheme.spacing.sm
+            spacing: Theme.TigerTheme.spacing.xs
+            
+            Rectangle {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                radius: Theme.TigerTheme.radius.sm
+                
+                gradient: Gradient {
+                    orientation: Gradient.Horizontal
+                    GradientStop { position: 0.0; color: previewCard.previewGradient[0] }
+                    GradientStop { position: 1.0; color: previewCard.previewGradient[1] }
+                }
+                
+                Image {
+                    anchors.centerIn: parent
+                    width: 24
+                    height: 24
+                    source: "image://icon/clock"
+                    sourceSize: Qt.size(24, 24)
+                    visible: previewCard.showAutoIcon
+                    opacity: 0.8
+                }
+            }
+            
+            RowLayout {
+                Layout.fillWidth: true
+                spacing: Theme.TigerTheme.spacing.xs
+                
+                RadioButton {
+                    id: themeRadio
+                    checked: previewCard.isSelected
+                    onClicked: previewCard.clicked()
+                    
+                    indicator: Rectangle {
+                        implicitWidth: 18
+                        implicitHeight: 18
+                        x: themeRadio.leftPadding
+                        y: parent.height / 2 - height / 2
+                        radius: 9
+                        color: "transparent"
+                        border.width: 2
+                        border.color: previewCard.isSelected 
+                                     ? Theme.TigerTheme.colors.primary 
+                                     : Theme.TigerTheme.colors.textSecondary
+                        
+                        Rectangle {
+                            anchors.centerIn: parent
+                            width: 10
+                            height: 10
+                            radius: 5
+                            color: Theme.TigerTheme.colors.primary
+                            visible: previewCard.isSelected
+                        }
+                    }
+                }
+                
+                Text {
+                    Layout.fillWidth: true
+                    text: previewCard.themeLabel
+                    color: Theme.TigerTheme.colors.textPrimary
+                    font.pixelSize: Theme.TigerTheme.typography.sizeSm
+                    font.weight: previewCard.isSelected ? Font.DemiBold : Font.Normal
+                }
+            }
+        }
+    }
+
+    component AccentColorButton: Rectangle {
+        id: accentBtn
+        
+        property string colorName: ""
+        property string colorHex: "#000000"
+        property bool isSelected: false
+        
+        signal clicked()
+        
+        width: 56
+        height: 56
+        radius: Theme.TigerTheme.radius.md
+        color: accentBtn.colorHex
+        border.width: accentBtn.isSelected ? 3 : 0
+        border.color: Theme.TigerTheme.colors.textPrimary
+        
+        scale: accentMouse.pressed ? 0.95 : (accentMouse.containsMouse ? 1.05 : 1.0)
+        
+        Behavior on scale { NumberAnimation { duration: 100 } }
+        Behavior on border.width { NumberAnimation { duration: 100 } }
+        
+        MouseArea {
+            id: accentMouse
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: accentBtn.clicked()
+        }
+        
+        // Checkmark
+        Rectangle {
+            anchors.centerIn: parent
+            width: 24
+            height: 24
+            radius: 12
+            color: "white"
+            visible: accentBtn.isSelected
+            
+            Text {
+                anchors.centerIn: parent
+                text: "✓"
+                font.pixelSize: 14
+                font.weight: Font.Bold
+                color: accentBtn.colorHex
+            }
+        }
+
+        // Tooltip
+        ToolTip {
+            visible: accentMouse.containsMouse
+            text: accentBtn.colorName
+            delay: 500
+        }
+    }
+}

@@ -1,0 +1,6 @@
+module Components
+GlassCard 1.0 GlassCard.qml
+GlassButton 1.0 GlassButton.qml
+AppListItem 1.0 AppListItem.qml
+CategoryCard 1.0 CategoryCard.qml
+Icon 1.0 Icon.qml

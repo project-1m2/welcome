@@ -1,0 +1,7 @@
+module Screens
+WelcomeScreen 1.0 WelcomeScreen.qml
+HubScreen 1.0 HubScreen.qml
+CustomizeScreen 1.0 CustomizeScreen.qml
+AppsScreen 1.0 AppsScreen.qml
+FirstStepsScreen 1.0 FirstStepsScreen.qml
+CommunityScreen 1.0 CommunityScreen.qml

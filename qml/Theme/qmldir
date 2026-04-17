@@ -1,0 +1,2 @@
+module Theme
+singleton TigerTheme 1.0 TigerTheme.qml
